@@ -3,6 +3,7 @@ from src.arcade_replay import run_arcade_replay
 
 from src.interfaces.qualifying import run_qualifying_replay
 import sys
+from src.cli.race_selection import cli_load
 from src.gui.race_selection import RaceSelectionWindow
 from PySide6.QtWidgets import QApplication
 
@@ -94,7 +95,10 @@ if __name__ == "__main__":
     win = RaceSelectionWindow()
     win.show()
     sys.exit(app.exec())
-
+  
+  if "--cli" in sys.argv:
+    cli_load()
+    sys.exit(0)
   # Get the year and round number from user input
 
   if "--year" in sys.argv:
